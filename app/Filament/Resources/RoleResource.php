@@ -90,8 +90,9 @@ class RoleResource extends Resource
         ];
     } 
     
-    public static function getEloquentQuery(): Builder
-{
-    return parent::getEloquentQuery()->where('name', '≠', 'Admin');
-}
+    // this line for hiding roles
+//     public static function getEloquentQuery(): Builder
+// {
+//     return parent::getEloquentQuery()->where('name', '≠', 'Admin');
+// }
 }
