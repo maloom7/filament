@@ -66,10 +66,10 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('name'),
-                Tables\Columns\TextColumn::make('email'),
+                Tables\Columns\TextColumn::make('name')->searchable(),
+                Tables\Columns\TextColumn::make('email')->searchable(),
                 Tables\Columns\TextColumn::make('email_verified_at')
-                    ->dateTime(),
+                    ->dateTime()->sortable(),
                 // Tables\Columns\TextColumn::make('two_factor_secret'),
                 // Tables\Columns\TextColumn::make('two_factor_recovery_codes'),
                 // Tables\Columns\TextColumn::make('two_factor_confirmed_at')
@@ -77,7 +77,7 @@ class UserResource extends Resource
                 // Tables\Columns\TextColumn::make('current_team_id'),
                 // Tables\Columns\TextColumn::make('profile_photo_path'),
                  Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime(),
+                    ->dateTime()->sortable(),
                 // Tables\Columns\TextColumn::make('updated_at')
                 //     ->dateTime(),
 
@@ -89,6 +89,7 @@ class UserResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),

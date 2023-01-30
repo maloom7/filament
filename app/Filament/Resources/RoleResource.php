@@ -16,6 +16,8 @@ use Spatie\Permission\Models\Role;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Card;
+use Filament\Forms\Components\Select;
+
 
 
 
@@ -37,7 +39,11 @@ class RoleResource extends Resource
                 Card::make()->schema([
                     TextInput::make('name')
                 ->minLength(2)
-                ->maxLength(255)
+                ->maxLength(255)->unique(ignoreRecord: true),
+                Select::make('permissions')
+                ->multiple()
+                ->relationship('permissions', 'name')->preload()
+
 
                 ])
                 
@@ -49,7 +55,11 @@ class RoleResource extends Resource
         return $table
             ->columns([
                 
-                    TextColumn::make('name')
+                    TextColumn::make('id')->sortable(),
+                    TextColumn::make('name'),
+                    TextColumn::make('created_at')
+                    ->dateTime('d-M-Y')->sortable(),
+
                      ])
                  
             ->filters([
@@ -57,6 +67,7 @@ class RoleResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\DeleteBulkAction::make(),
