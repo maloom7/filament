@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\RoleResource\Pages;
 use App\Filament\Resources\RoleResource\RelationManagers;
-// use App\Models\Role;
+use App\Models\Role;
 use Filament\Forms;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -12,7 +12,7 @@ use Filament\Resources\Table;
 use Filament\Tables;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Spatie\Permission\Models\Role;
+// use Spatie\Permission\Models\Role;
 use Filament\Forms\Components\TextInput;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Forms\Components\Card;
@@ -91,6 +91,7 @@ class RoleResource extends Resource
     } 
     
     // this line for hiding roles
+
 //     public static function getEloquentQuery(): Builder
 // {
 //     return parent::getEloquentQuery()->where('name', '≠', 'Admin');
