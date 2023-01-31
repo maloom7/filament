@@ -15,7 +15,7 @@ use Filament\Models\Contracts\FilamentUser;
 
 
 
-class User extends Authenticatable implements FilamentUser
+class User extends Authenticatable 
 {
     use HasRoles;
     use HasApiTokens;
@@ -65,8 +65,8 @@ class User extends Authenticatable implements FilamentUser
         'profile_photo_url',
     ];
 
-    public function canAccessFilament(): bool
-    {
-        return $this->hasRole(['Admin', 'Writer','Moderator']);
-    }
+    // public function canAccessFilament(): bool
+    // {
+    //     return $this->hasRole(['Admin', 'Writer','Moderator']);
+    // }
 }
